@@ -30,17 +30,18 @@ function SearchVenues () {
 
     return (
         <div>
-          <input onChange={onInputChange} value={search} placeholder='Search for venues' />
+          <input onChange={onInputChange} value={search} placeholder='Search for venues'/>
             {search !== '' ?
-              <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4'>
+              <div className='row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 mt-3'>
                 {filteredSearch.map((venue) => (
                   <div key={venue.id} className='col'>
                     <div className='card d-flex flex-column h-100'>
                       <img src={venue.media} alt={venue.description} className='card-img-top' style={{ objectFit: 'cover', height: '200px' }}/>
-                      <div className='card-body d-flex flex-column' style={{ height : '200px'}}>
+                      <div className='card-body d-flex flex-column' style={{ height : '250px'}}>
                         <h5 className='card-title'>{venue.name}</h5>
-                        <p className='card-text'>{venue.location.city}</p>
-                        <p className='card-text'>{venue.location.country}</p>
+                        <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>City:</p><p className='card-text m-1 text-end'>{venue.location.city}</p></div>
+                        <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Country:</p><p className='card-text m-1 text-start'>{venue.location.country}</p></div>
+                        <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Per night:</p><p className='card-text m-1 text-start'>{venue.price}$</p></div>
                         <div className='mt-auto d-grid gap-2'>
                           <button className='btn btn-primary'>
                             <Link to={'/venue/'+venue.id}>View venue</Link>
@@ -100,9 +101,9 @@ if (hasError){
                 <img src={data.media} alt={data.description} className='card-img-top'style={{ objectFit: 'cover', height: '200px' }}/>
                 <div className='card-body d-flex flex-column' style={{ height: '250px' }}> 
                     <h5 className='card-title'>{data.name}</h5>
-                    <p className='card-text m-1'>City: {data.location.city}</p>
-                    <p className='card-text m-1'>Country: {data.location.country}</p>
-                    <p className='card-text m-1'>Per night: {data.price}$</p>
+                    <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>City:</p><p className='card-text m-1 text-end'>{data.location.city}</p></div>
+                    <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Country:</p><p className='card-text m-1 text-start'>{data.location.country}</p></div>
+                    <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Per night:</p><p className='card-text m-1 text-start'>{data.price}$</p></div>
                   <div className='mt-auto d-grid gap-2'>
                     <button className='btn btn-primary'>
                       <Link to={'/venue/' + data.id}>View venue</Link>

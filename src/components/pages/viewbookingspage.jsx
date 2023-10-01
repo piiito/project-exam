@@ -47,14 +47,14 @@ export function ViewBookingsPage() {
                                 <div className='col-lg-4' key={data.id}>
                                     <div className='card h-100'>
                                         <div className='card-body'>
-                                            <h5 className='card-title'>{data.venue.name} </h5>
                                             <img src={data.venue.media} className='card-img-top 'style={{ objectFit: 'cover', height: '200px' }} alt={data.venue.name}/>
-                                            <p className='card-text mt-3'>Check-in: {data.dateFrom.slice(0, 10)} </p>
-                                            <p className='card-text'>Check-out: {data.dateTo.slice(0,10)}</p>
-                                            <p className='card-text'>Guests: {data.venue.maxGuests}</p>
-                                            <p className='card-text'>Rating: {data.venue.rating}</p>
-                                            <p className='card-text'>Address{ data.venue.location.address}, {data.venue.location.zip} {data.venue.location.city}, {data.venue.location.country}</p>
-                                            <button className='btn btn-primary'>
+                                            <h5 className='card-title mt-2'>{data.venue.name} </h5>
+                                            <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Check-in</p><p className='card-text m-1 text-end'>{data.dateFrom.slice(0, 10)} </p></div>
+                                            <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Check-out</p><p className='card-text m-1 text-start'>{data.dateTo.slice(0,10)}</p></div>
+                                            <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Guests</p><p className='card-text m-1 text-start'>{data.venue.maxGuests}</p></div>
+                                            <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Rating</p><p className='card-text m-1 text-end'>{data.venue.rating}</p></div>
+                                            <div className='d-flex justify-content-between card-text my-1 px-1'><p className='card-text m-1 text-start'>Adress</p><p className='card-text m-1 text-start'>{ data.venue.location.address}, {data.venue.location.zip} {data.venue.location.city}, {data.venue.location.country}</p></div>
+                                            <button className='btn btn-primary m-2'>
                                                 <Link to={'/venue/' + data.venue.id}>View Venue</Link>
                                             </button>
                                         </div>

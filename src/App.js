@@ -84,14 +84,15 @@ function Nav(){
 
   return (
   <div>
-    <nav className='navbar navbar-expand-lg'>
+    <nav className='navbar fixed-top'>
       <div className="container-fluid">
-      <Link className='navbar-brand' to="/">Holidaze</Link>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <Link className='navbar-brand mt-4 ' to="/">Holidaze</Link>
+      <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div className='collapse navbar-collapse' id='navbarNav'>
-        <ul className='navbar-nav'>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+       <div class="offcanvas-body">
+        <ul className='navbar-nav mt-5'>
           <li className='nav-item'>
           {manager === 'true' ? (
           <Link className='nav-link' to="/managevenues">Manage Venues </Link>
@@ -118,6 +119,7 @@ function Nav(){
           ):( '' )}
           </li>
         </ul>
+        </div>
       </div>
       </div>
     </nav>
