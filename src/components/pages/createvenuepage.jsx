@@ -154,7 +154,7 @@ export function CreateVenuePage(){
                                 <label className='form-label' htmlFor='name'>
                                     Venue name
                                 </label>
-                                <input className='form-control' {...register('name')}></input>
+                                <input className='form-control' {...register('name')} type='name'></input>
                                 <div className='text-danger'>{errors.name?.message}</div>
                             </div>
                             <div className='mb-3 text-start'>
@@ -168,21 +168,21 @@ export function CreateVenuePage(){
                                 <label className='form-label' htmlFor='maxGuests'>
                                     Max guests
                                 </label>
-                                <input className='form-control' {...register('maxGuests')}></input>
+                                <input className='form-control' {...register('maxGuests')} type='maxguests'></input>
                                 <div className='text-danger'>{errors.maxGuests?.message}</div>
                             </div>
                             <div className='mb-3 text-start'>
                                 <label className='form-label' htmlFor='media'>
                                     Direct image link
                                 </label>
-                                <input className='form-control' {...register('media')}></input>
+                                <input className='form-control' {...register('media')} type='media'></input>
                                 <div className='text-danger'>{errors.media?.message}</div>
                             </div>
                             <div className='mb-3 text-start'>
                                 <label className='form-label ' htmlFor='description'>
                                     Description
                                 </label>
-                                <textarea className='form-control' {...register('description')}></textarea>
+                                <textarea className='form-control' {...register('description')} type='description'></textarea>
                                 <div className='text-danger'>{errors.description?.message}</div>
                             </div>
                             <div className='mb-3 text-start'>

@@ -89,7 +89,7 @@ export function LoginPage(){
                     <label htmlFor='email' className='form-label'>
                       Email
                     </label>
-                    <input {...register('email')} className='form-control' />
+                    <input {...register('email')} type='email' className='form-control' />
                     <p className='text-danger'>{errors.email?.message}</p>
                   </div>
                   <div className='mb-3 text-start'>

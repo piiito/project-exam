@@ -26,7 +26,6 @@ export default function useAPI(url, method, info) {
                 setData(json);
 
             } catch (error){
-                console.log(error);
                 setHasError(true);
 
             } finally {

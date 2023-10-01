@@ -49,7 +49,7 @@ export function RegisterPage(){
     const url = 'https://api.noroff.dev/api/v1/holidaze/auth/register';
     const navigate = useNavigate();
     const { register, handleSubmit, formState : { errors }, reset } = useForm({ resolver: yupResolver(schema),});
-    
+
 
     const onSubmitHandler = (data) => {
 
@@ -94,28 +94,28 @@ export function RegisterPage(){
                                 <label htmlFor='name' className='form-label'>
                                     Username
                                 </label>
-                                <input {...register('name')} className='form-control'/>
+                                <input {...register('name')} type='name' className='form-control'/>
                                 <p className='text-danger'>{errors.name?.message}</p>
                             </div>
                             <div className='mb-3 text-start'>
                                 <label htmlFor='email' className='form-label'>
                                     Email
                                 </label>
-                                <input {...register('email')} className='form-control'/>
+                                <input {...register('email')} type='email' className='form-control'/>
                                 <p className='text-danger'>{errors.email?.message}</p>
                             </div>
                             <div className='mb-3 text-start'>
                                 <label htmlFor='password' className='form-label'>
                                     Password
                                 </label>
-                                <input {...register('password')} className='form-control'/>
+                                <input {...register('password')} type='password' className='form-control'/>
                                 <p className='text-danger'>{errors.password?.message}</p>
                             </div>
                             <div className='mb-3 text-start'>
                                 <label htmlFor='retypePassword' className='form-label'
                                 >Confirm assword
                             </label>
-                                <input {...register('retypePassword')} className='form-control'/>
+                                <input {...register('retypePassword')} type='retypepassword' className='form-control'/>
                                 <p className='text-danger'>{errors.retypePassword?.message}</p>
                             </div>
                             <div className='text-start'>

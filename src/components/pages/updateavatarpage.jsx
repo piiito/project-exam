@@ -133,8 +133,8 @@ export function UpdateAvatarPage(){
                 </div>
                 <form className='avatar-form'>
                     <div className='mb-3 input-group justify-content-center container-xl'>
-                        <legend className='h5 pt-3'>Change avatar</legend>
-                        <input className='form-control avatar-input' id='floatingInput' {...register('avatar')} onChange={(event) => setNewProfileImage(event.target.value)} placeholder='Please enter direct link to an image'></input>
+                        <label htmlFor='imageurl' className='h5 pt-3'>Change avatar</label>
+                        <input className='form-control avatar-input' type='imageurl' id='floatingInput' {...register('avatar')} onChange={(event) => setNewProfileImage(event.target.value)} placeholder='Please enter direct link to an image'></input>
                         <div> {errors.avatar?.message}</div>
                         <button type='submit' className='btn btn-primary' onClick={handleSubmit(onSaveHandler)}>Save</button>
                     </div>   

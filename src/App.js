@@ -64,7 +64,7 @@ function Footer(){
   return (
   <footer className="text-center mt-4">
   <div className=''>
-    <h5 className=" mb-0">Birgitte Vedaa©</h5>
+    <p className=" mb-0">Birgitte Vedaa©</p>
   </div>
 </footer>
 
