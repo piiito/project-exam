@@ -1,10 +1,7 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import useAPI from '../useApi';
 import DocumentMeta from 'react-document-meta';
-
-import { Routes, Route, Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 export function ViewBookingsPage() {
@@ -21,14 +18,18 @@ export function ViewBookingsPage() {
         },
       };
 
-      
-    const params = useParams();
     const userName = localStorage.getItem('Name');
-    const name = params.name;
-
-
     const { data, isLoading, isError } = useAPI('https://api.noroff.dev/api/v1/holidaze/profiles/'+userName+'?_bookings=true&_venues=true', 'GET');
-    console.log(data)
+    
+    if (isLoading) {
+        return (
+            <div>Loading</div>
+        );
+        }
+    if (isError){
+        return <div>Error has occured, refresh please</div>
+
+    }
 
    
 

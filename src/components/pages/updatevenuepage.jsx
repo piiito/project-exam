@@ -1,5 +1,5 @@
 import React from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -70,7 +70,7 @@ export function UpdateVenuePage(){
     
     const navigate = useNavigate();
     let params = useParams();
-    const { data, isLoading, isError } = useAPI('https://api.noroff.dev/api/v1/holidaze/venues/' + params.id + '?_owner=true', 'GET');
+    const { data, isLoading, hasError } = useAPI('https://api.noroff.dev/api/v1/holidaze/venues/' + params.id + '?_owner=true', 'GET');
     const { register: registerEdit, handleSubmit: handleEditSubmit, formState: {errors}, reset, } = useForm({ resolver: yupResolver(schema),});
 
 
@@ -88,6 +88,7 @@ export function UpdateVenuePage(){
         try{
             await fetch(url, options);
             alert('Venue successfully deleted')
+            reset();
             navigate('/');
 
         }catch (error){
@@ -137,6 +138,16 @@ export function UpdateVenuePage(){
             }catch (error) {
                 console.log(error);
             }
+        }
+
+        if (isLoading) {
+            return (
+                <div>Loading</div>
+            );
+            }
+        if (hasError){
+            return <div>Error has occured, refresh please</div>
+
         }
 
 

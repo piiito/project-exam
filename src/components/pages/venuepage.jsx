@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, useNavigate , Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import useAPI from '../useApi';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -61,30 +61,30 @@ export function VenuePage(){
     const date = new Date();
     const [arrivalDate, setArrivalDate] = useState(date);
     const [departureDate, setDepartureDate] = useState( new Date(arrivalDate.getTime() + 86400000));
-    const { data, isLoading, hasError} = useAPI('https://api.noroff.dev/api/v1/holidaze/venues/'+params.id);
+    const { data, isLoading, hasError} = useAPI('https://api.noroff.dev/api/v1/holidaze/venues/'+params.id+"?_owner=true&_bookings=true");
     const { register, handleSubmit, formState : { errors }, reset } = useForm({ resolver: yupResolver(schema),});
     const bookings = data.bookings;
 
 
     const getDaysArray = (bookings) => {
-        if (!bookings || bookings.length === 0) {
-          return [];
-        }
-      
-        const bookedDates = [];
-        bookings.forEach((booking) => {
-          let currentDate = new Date(booking.dateFrom);
-          const endDate = new Date(booking.dateTo);
-      
-          while (currentDate <= endDate) {
-            getDaysArray.push(new Date(currentDate));
-            currentDate.setDate(currentDate.getDate() + 1);
-          }
-        });
-      
-        return getDaysArray;
-      };
-
+      const bookedDates = [];
+  
+      if (bookings && bookings.length > 0) {
+          bookings.forEach((booking) => {
+              let currentDate = new Date(booking.dateFrom);
+              const endDate = new Date(booking.dateTo);
+  
+              while (currentDate <= endDate) {
+                  bookedDates.push(new Date(currentDate));
+                  currentDate.setDate(currentDate.getDate() + 1);
+              }
+          });
+      }
+  
+      return bookedDates;
+  };
+  
+console.log(data)
     const onSubmitHandler = async (event) => {
         const url = 'https://api.noroff.dev/api/v1/holidaze/bookings';
         const token = localStorage.getItem('Token');
@@ -134,7 +134,6 @@ export function VenuePage(){
         </div>
     }
 
-    const meta = data.meta;
 
     return (
     <>

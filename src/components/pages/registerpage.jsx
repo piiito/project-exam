@@ -49,18 +49,7 @@ export function RegisterPage(){
     const url = 'https://api.noroff.dev/api/v1/holidaze/auth/register';
     const navigate = useNavigate();
     const { register, handleSubmit, formState : { errors }, reset } = useForm({ resolver: yupResolver(schema),});
-
-    const meta = {
-        title: 'Holidaze | Register',
-        description: 'Holidaze is a booking site - fill this in later - OBS!',
-        meta: {
-            charset: 'utf-8',
-            name: {
-                keywords: 'holidaze, venues, hotels, holiday, vacation',
-
-            },
-        },
-    }
+    
 
     const onSubmitHandler = (data) => {
 

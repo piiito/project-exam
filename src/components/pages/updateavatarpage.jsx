@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import useAPI from '../useApi';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -33,10 +32,8 @@ export function UpdateAvatarPage(){
         },
       };
     
-    const params = useParams();
     const userName = localStorage.getItem('Name');
     const [imageURL, setImageURL] = useState(Placeholder);
-    const name = params.name;
 
 
     function setNewProfileImage(value){
@@ -121,8 +118,6 @@ export function UpdateAvatarPage(){
 
         }
         
-        
-
 
     return (
      <>
@@ -132,7 +127,7 @@ export function UpdateAvatarPage(){
                 <h1>Avatar</h1>
                 <div style={{ width: '150px' }} className='text-center mx-auto d-block ' >
                     {data.avatar ? (
-                    <img  style={{ width: '100%' }} class='image-fluid rounded-circle mx-auto d-block' src={data.avatar} alt='Profile'  onError={(event) => { if (event.target.src !== Placeholder) { event.target.onerror = null; event.target.src= Placeholder;}}}/>)
+                    <img  style={{ width: '100%' }} class='image-fluid rounded-circle mx-auto d-block' src={imageURL} alt='Profile'  onError={(event) => { if (event.target.src !== Placeholder) { event.target.onerror = null; event.target.src= Placeholder;}}}/>)
                     :
                     (<img  style={{ width: '100%' }} class='image-fluid rounded-circle mx-auto d-block' src={Placeholder} alt='Profile' ></img>)}
                 </div>

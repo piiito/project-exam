@@ -72,7 +72,17 @@ export function HomePage(){
     },
   };
 
-  const { data } = useAPI(API_URL);
+  const { data , isLoading, hasError } = useAPI(API_URL);
+
+  if (isLoading) {
+    return (
+        <div>Loading</div>
+    );
+    }
+if (hasError){
+    return <div>Error has occured, refresh please</div>
+
+}
 
   return (
     <>
