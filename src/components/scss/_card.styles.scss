@@ -1,7 +1,11 @@
-.card{
+div .card{
     box-shadow: lightgrey 0px 3px 8px;
+    border-radius: 30px;
 }
 
+div .card IMG{
+    border-radius: 30px;
+}
 .card-title{
     text-align: center;
     font-weight: bold;

@@ -19,7 +19,7 @@ export function ManageVenuesPage(){
   };
 
     const userName = localStorage.getItem('Name');
-    const { data, isLoading, hasError } = useAPI('https://api.noroff.dev/api/v1/holidaze/profiles/' + userName + '/venues', 'GET');
+    const { data, isLoading, hasError } = useAPI('https://api.noroff.dev/api/v1/holidaze/profiles/' + userName + '?_bookings=true&_venues=true', 'GET');
 
     if (isLoading) {
         return (
@@ -30,38 +30,38 @@ export function ManageVenuesPage(){
         return <div>Error has occured, refresh please</div>
 
     }
-
-
+    
+    
     return (
       <>
           <DocumentMeta {...metatags} />
           <main className='min-vh-100'>
               <div className='container mt-5'>
                   <div className='row justify-content-center'>
-                      <div className='col-lg-8 text-center'>
+                      <div className='col text-center'>
                           <h1 className='text-center mb-4'>Your Venues</h1>
                           <Link to='/createvenue/' className='btn btn-primary button my-5'>
                               Create New Venue
                           </Link>
-                          <div className='row row-cols-1 row-cols-md-2 g-4'>
-                              {data.length > 0 ? (
-                                  data.map((venue) => (
-                                      <div className='col' key={venue.id}>
+                          <div className='row g-4'>
+                              {data.venues && data.venues.length > 0 ? (
+                                  data.venues.map((venue) => (
+                                      <div className='col-lg-4' key={venue.id}>
                                           <div className='card h-100'>
                                               <img src={venue.media[0]} className='card-img-top' alt={venue.name} />
                                               <div className='card-body'>
                                                   <h5 className='card-title'>{venue.name}</h5>
-                                                  {venue.bookings ? (
-                                                      <div>
-                                                          <h6>Upcoming Bookings:</h6>
-                                                          <ul className='list-unstyled'>
-                                                              {venue.bookings.map((booking) => (
-                                                                  <li key={booking.id}>
-                                                                      {booking.date} - {booking.user}
-                                                                  </li>
-                                                              ))}
-                                                          </ul>
-                                                      </div>
+                                                  {data.bookings && data.bookings.length > 0 ? (
+                                                   <div>
+                                                        <h6>Upcoming Bookings:</h6>
+                                                        <ul className='list-unstyled'>
+                                                        {data.bookings.map((booking) => (
+                                                            <li key={booking.id}>
+                                                                <p >From: {booking.dateFrom.slice(0,10)} <br/> To: {booking.dateTo.slice(0,10)}</p>
+                                                            </li>
+                                                        ))}
+                                                        </ul>
+                                                  </div>
                                                   ) : (
                                                       <p>No current bookings</p>
                                                   )}

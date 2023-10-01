@@ -123,20 +123,21 @@ export function UpdateAvatarPage(){
      <>
         <DocumentMeta {...metatags}/>
         <main className='min-vh-100'>
-            <div className='text-center col-6 mt-5 mb-5  mx-auto avatar-page'>
+            <div className='text-center col-md-6 col-sm-8 col-4-lg mt-5 mb-5 mx-auto avatar-page'>
                 <h1>Avatar</h1>
-                <div style={{ width: '150px' }} className='text-center mx-auto d-block ' >
+                <div style={{ width: '200px' }} className='text-center mx-auto d-block my-4 ' >
                     {data.avatar ? (
                     <img  style={{ width: '100%' }} class='image-fluid rounded-circle mx-auto d-block' src={imageURL} alt='Profile'  onError={(event) => { if (event.target.src !== Placeholder) { event.target.onerror = null; event.target.src= Placeholder;}}}/>)
                     :
                     (<img  style={{ width: '100%' }} class='image-fluid rounded-circle mx-auto d-block' src={Placeholder} alt='Profile' ></img>)}
                 </div>
                 <form className='avatar-form'>
-                    <div className='mb-3 input-group justify-content-center container-xl'>
-                        <label htmlFor='imageurl' className='h5 pt-3'>Change avatar</label>
-                        <input className='form-control avatar-input' type='imageurl' id='floatingInput' {...register('avatar')} onChange={(event) => setNewProfileImage(event.target.value)} placeholder='Please enter direct link to an image'></input>
+                    <div className='mb-3 input container-xl'>
+                        <label htmlFor='imageurl' className='h5 pt-3'>Change avatar
+                            <input className='form-control avatar-input' type='imageurl' id='floatingInput' {...register('avatar')} onChange={(event) => setNewProfileImage(event.target.value)} placeholder='Please enter direct link to an image'></input>
+                        </label>
                         <div> {errors.avatar?.message}</div>
-                        <button type='submit' className='btn btn-primary' onClick={handleSubmit(onSaveHandler)}>Save</button>
+                        <button type='submit' className='btn btn-primary px-5' onClick={handleSubmit(onSaveHandler)}>Save</button>
                     </div>   
                 </form>
             </div>
