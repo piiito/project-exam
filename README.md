@@ -7,7 +7,6 @@ This is a website for an accommodation booking company.
 ## Description
 
 This project entails creating a website for a accommodation booking company called Holidaze. It is targeted to young adults looking for new adventures. This project has evolved my knowledge in React and Bootstrap.
-Add a more detailed description of what your project entails and set out to do.
 
 ## Built With
 
